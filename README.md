@@ -1,47 +1,27 @@
-# Can Mathematics Predict Urban Heat? 
-### Modelling the Thermal Impact of Green Infrastructure in Burwood North
+# Modelling Urban Heat: LST vs ISF in Burwood North
 
-This repository hosts the data analysis scripts, mathematical models, and statistical workflows used to evaluate the Urban Heat Island (UHI) mitigation efficacy of the 2026 Burwood North Metro Precinct (BNMP) Rezoning Masterplan. 
+This is the repository for my high school research project. I investigated how urban development and concrete surfaces affect local temperatures around the Burwood North Metro Precinct rezoning area, using Burwood Park as a baseline.
 
----
+## My Core Results
 
-## Core Research Findings
-* **One-Way ANOVA:** Identified statistically significant differences in Land Surface Temperature (LST) across the three microclimatic zones (**F = 71.60, p < 0.001**).
-* **OLS Linear Regression:** Demonstrated a strong positive correlation between Impervious Surface Fraction (ISF) and LST (**r = 0.935, R² = 0.874**).
-* **Spatial Decay Analysis:** Confirmed that the Park Cooling Effect (PCE) is strongest near the park boundary, with local morphology causing non-linear microclimatic wave patterns further down the 160m transect.
+* Zone Differences: A One-Way ANOVA proved there is a significant difference in temperature across my three fieldwork zones (F = 71.60, p < 0.001).
+* Concrete vs Heat: OLS Linear Regression showed a really strong link between Impervious Surface Fraction (ISF) and Land Surface Temperature (LST), with an R² of 0.874.
+* Park Cooling Effect: My 160m transect data showed that while the park cools the immediate area, local buildings and shops create a non-linear "wave" pattern further away.
 
----
+## The Python Scripts
 
-## Repository Architecture & Python Scripts
+* microclimatic_transect_profile.py: Plots my 160m walk data and labels real landmarks like the Burwood Park boundary and the local commercial buildings.
+* one_way_anova_tukey.py: Runs the ANOVA and a follow-up Tukey HSD test to compare the three zones.
+* ols_regression_residuals.py: Builds the linear regression model and plots the residual graphs to check my statistical assumptions.
 
-### 1. `microclimatic_transect_profile.py`
-Plots the 160-metre continuous thermal trajectory moving away from the Burwood Park control baseline. It maps specific geographic landmarks (such as the high-density commercial "Chicken Store" zone and local urban canyons) against post-sunset LST values.
+## Libraries Used
 
-### 2. `one_way_anova_tukey.py`
-Executes a One-Way Analysis of Variance (ANOVA) to evaluate the null hypothesis across Zone A (Burwood Park), Zone B (Burwood Station high-rises), and Zone C (BNMP Residential zone). Follows up with a post-hoc **Tukey HSD** test for pairwise group comparisons.
+I used Python 3 along with pandas, numpy, matplotlib, seaborn, scipy.stats, and statsmodels.
 
-### 3. `ols_regression_residuals.py`
-Constructs the Ordinary Least Squares (OLS) linear regression model mapping the predictive influence of the independent variable ISF ($X$) on the dependent variable LST ($Y$). It automatically generates diagnostic **residual analysis graphs** to mathematically validate the assumptions of homoscedasticity and linearity.
-
----
-
-## Tech Stack & Environment
-This project uses **Python 3** with the following scientific computing libraries:
-* `statsmodels` — OLS Regression modelling & Tukey HSD pairwise test
-* `scipy.stats` — Inferential statistics & One-way ANOVA calculation
-* `matplotlib` & `seaborn` — Microclimatic profile plotting and residual graphics
-* `pandas` & `numpy` — Array manipulation and matrix math
-
----
-
-## Visual Data Profiles
-### 160m Continuous Microclimatic Transect Profile
-Below is the generated wave profile showing the thermal trajectory away from the parkland control baseline:
+## My Transect Graph
 
 ![Transect Profile](transect_wave_profile.png)
 
----
+## Project Notes and AI Disclosure
 
-## Academic Integrity & AI Transparency
-* **Primary Data:** Fieldwork observations, spatial grid evaluations via Google Earth satellite orthophotography, and 3-night longwave thermal re-emission measurements were captured entirely by the author.
-* **Technical Implementation:** AI assistance was utilised as a programmatic tool to optimise Python syntax for data analysis and assist with LaTeX document formatting.
+I collected all the temperature data myself during fieldwork over three evenings in May 2026, and mapped the surface grids using Google Earth. I used AI as a tool to help me clean up my matplotlib code, structure the statsmodel library syntax, and fix my LaTeX document formatting.
